@@ -3,13 +3,10 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                checkout([$class: 'GitSCM',
-                        branches: [[name: '*/main' ]],
-                        extensions: scm.extensions,
-                        userRemoteConfigs: [[
-                            url: 'https://github.com/dattruong88vn/education-jenkins-pipeline.git'
-                        ]]
-                    ])
+                git {
+                    branch: 'main',
+                    url: 'https://github.com/dattruong88vn/education-jenkins-pipeline.git'
+                }    
             }
         }
     }
