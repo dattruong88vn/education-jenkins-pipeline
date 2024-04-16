@@ -4,4 +4,4 @@ RUN mkdir -p /app
 
 COPY . /app
 
-CMD ["node", "server.js"]
+CMD ["node", "/app/server.js"]
