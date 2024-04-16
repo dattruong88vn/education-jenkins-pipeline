@@ -6,15 +6,15 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/dattruong88vn/education-jenkins-pipeline.git'
             }
         }
-        // stage('Registry Image') {
-        //     steps {
-        //         // This step should not normally be used in your script. Consult the inline help for details.
-        //         withDockerRegistry(credentialsId: 'docker-1', url: 'https://index.docker.io/v2/') {
-        //             // some block
-        //             sh 'docker build -t dattruong88vn/test-jenkins:v1.0 .'
-        //             sh 'docker push dattruong88vn/test-jenkins:v1.0'
-        //         }
-        //     }
-        // }
+        stage('Registry Image') {
+            steps {
+                // This step should not normally be used in your script. Consult the inline help for details.
+                withDockerRegistry(credentialsId: 'docker-hub-account', url: 'https://index.docker.io/v1/') { {
+                    // some block
+                    sh 'docker build -t dattruong88vn/test-jenkins:v1.0 .'
+                    sh 'docker push dattruong88vn/test-jenkins:v1.0'
+                }
+            }
+        }
     }
 }
